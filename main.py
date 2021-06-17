@@ -16,8 +16,17 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
+
+    msg = message.content
     
     if message.content.startswith('$hello'):
         await message.channel.send('hello')
+    
+    if message.content.startswith('$jianing'):
+        await message.channel.send('hello Jianing')
+    
+    if message.content.startswith('$ping'):
+        ping = msg.split("$ping ",1)[1]
+        await message.channel.send('{} {}'.format(ping, 'has been pinged'))
 
 client.run(Token)
