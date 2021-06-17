@@ -9,6 +9,7 @@ with open('env/variables.json', 'r') as tkn:
     Token = json.load(tkn)[0]['Token']
 
 client = discord.Client()
+key_char = '.'
 
 @client.event
 async def on_ready():
@@ -21,17 +22,17 @@ async def on_message(message):
 
     msg = message.content
     
-    if message.content.startswith('$hello'):
+    if message.content.startswith('{}hello'.format(key_char)):
         await message.channel.send('```hello```')
     
-    if message.content.startswith('$jianing'):
+    if message.content.startswith('{}jianing'.format(key_char)):
         await message.channel.send('```hello Jianing```')
     
-    if message.content.startswith('$ping'):
+    if message.content.startswith('{}ping'.format(key_char)):
         ping = msg.split("$ping ",1)[1]
         await message.channel.send('{} {}'.format(ping, 'has been pinged'))
     
-    if message.content.startswith('$guess'):
+    if message.content.startswith('{}guess'.format(key_char)):
         await message.channel.send('```Guess a number between 1 and 10.```')
 
         def is_correct(m):
