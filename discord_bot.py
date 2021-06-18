@@ -4,9 +4,23 @@ from replit import db
 import json
 import random
 import asyncio
+from pathlib import Path
 
-with open('env/variables.json', 'r') as tkn:
-    Token = json.load(tkn)[0]['Token']
+token_path = 'env'
+token_file = '/variables.json'
+
+try:
+    with open(token_path+token_file, 'r') as tkn:
+        Token = json.load(tkn)[0]['Token']
+except:
+    data =[{"Token": "ADD YOUR TOKEN HERE"}]
+
+    Path(token_path).mkdir(parents=True, exist_ok=True)
+    with open(token_path+token_file, 'w') as tkn:
+        json.dump(data, tkn)
+
+    print('Please add your token inside of {}'.format(token_path+token_file))
+    exit()
 
 client = discord.Client()
 key_char = '.'
