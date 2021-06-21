@@ -34,9 +34,9 @@ class algorithmic_bot(discord.Client):
 
         self.role_message_id = 856358629804736512
         self.emoji_to_role = {
-            discord.PartialEmoji(name='🔴'): 856360034221293578,
-            discord.PartialEmoji(name='🟡'): 844969982261067786,
-            discord.PartialEmoji(name='green', id=0): 844970072112103445
+            discord.PartialEmoji(name='ShinobuWahh', id=844972839055523870): 856360034221293578,
+            discord.PartialEmoji(name='PepeG', id=844972837932105769): 856375683185115158,
+            discord.PartialEmoji(name='KEKZeroTwo', id=845313046972203018): 856375738697908224
         }
 
     @client.event
@@ -54,6 +54,9 @@ class algorithmic_bot(discord.Client):
             return
 
         try:
+            print(payload.emoji)
+            print('*'*50)
+            print(self.emoji_to_role)
             role_id = self.emoji_to_role[payload.emoji]
         except KeyError:
             # If the emoji isn't the one we care about then exit as well.
